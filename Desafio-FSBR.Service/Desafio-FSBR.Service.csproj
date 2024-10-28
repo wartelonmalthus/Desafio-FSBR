@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Desafio-FSBR.Data\Desafio-FSBR.Data.csproj" />
+    <ProjectReference Include="..\Desafio-FSBR.Model\Desafio-FSBR.Model.csproj" />
+  </ItemGroup>
+
 </Project>

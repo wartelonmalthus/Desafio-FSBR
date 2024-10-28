@@ -1,0 +1,105 @@
+﻿@model Desafio_FSBR.Model.ViewModel.Processo.ProcessoIndexViewModel
+
+@{
+    ViewData["Title"] = "Processos";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Lista de Processos</h2>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProcessModal">
+        Novo Processo
+    </button>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>NPU</th>
+            <th>Data de Cadastro</th>
+            <th>UF</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var processo in Model.Processos)
+        {
+            <tr>
+                <td>@processo.NPU</td>
+                <td>@processo.DataCadastro.ToString("dd/MM/yyyy")</td>
+                <td>@processo.UF</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@processo.Id" class="btn btn-info btn-sm">Visualizar</a>
+                    <a asp-action="Edit" asp-route-id="@processo.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@processo.Id" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal para Adicionar Processo -->
+<<div class="modal fade" id="addProcessModal" tabindex="-1" aria-labelledby="addProcessModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProcessModalLabel">Adicionar Processo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create" method="post">
+                    <div class="form-group mb-3">
+                        <label asp-for="NovoProcesso.NomeProcesso" class="control-label"></label>
+                        <input asp-for="NovoProcesso.NomeProcesso" class="form-control" />
+                        <span asp-validation-for="NovoProcesso.NomeProcesso" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="NovoProcesso.NPU" class="control-label"></label>
+                        <input asp-for="NovoProcesso.NPU" class="form-control" />
+                        <span asp-validation-for="NovoProcesso.NPU" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="NovoProcesso.UF" class="control-label"></label>
+                        <select asp-for="NovoProcesso.UF" class="form-control" id="ufSelect">
+                            <option value="">Selecione a UF</option>
+                            <option value="SP">SP</option>
+                            <option value="RJ">RJ</option>
+                            <!-- Outras UFs -->
+                        </select>
+                        <span asp-validation-for="NovoProcesso.UF" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="NovoProcesso.Municipio" class="control-label"></label>
+                        <select asp-for="NovoProcesso.Municipio" class="form-control" id="municipioSelect">
+                            <option value="">Selecione o Município</option>
+                        </select>
+                        <span asp-validation-for="NovoProcesso.Municipio" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        // JavaScript para carregar os municípios conforme a UF
+        document.getElementById("ufSelect").addEventListener("change", async function () {
+            const uf = this.value;
+            const municipioSelect = document.getElementById("municipioSelect");
+            municipioSelect.innerHTML = '<option value="">Selecione o Município</option>';
+
+            if (uf) {
+                const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`);
+                const municipios = await response.json();
+                municipios.forEach(municipio => {
+                    const option = document.createElement("option");
+                    option.value = municipio.nome;
+                    option.text = municipio.nome;
+                    municipioSelect.add(option);
+                });
+            }
+        });
+    </script>
+}

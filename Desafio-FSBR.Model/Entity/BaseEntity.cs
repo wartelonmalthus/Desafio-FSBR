@@ -5,13 +5,13 @@ public abstract class BaseEntity
 {
     protected BaseEntity()
     {
-        CreateAt = DateTime.Now;
-        SoftDelete = false;
+        DataCadastro = DateTime.Now;
+        DelecaoLogica = false;
     }
     public int Id { get; set; }
-    public DateTime CreateAt { get; set; }
-    public DateTime? UpdatedAt { get; set; }
-    public bool SoftDelete { get; set; }
+    public DateTime DataCadastro { get; set; }
+    public DateTime? DataAlteracao { get; set; }
+    public bool DelecaoLogica { get; set; }
 }
 
 
