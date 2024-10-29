@@ -12,10 +12,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Refit" Version="7.2.1" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="7.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Desafio-FSBR.Data\Desafio-FSBR.Data.csproj" />
+    <ProjectReference Include="..\Desafio-FSBR.Service\Desafio-FSBR.Service.csproj" />
   </ItemGroup>
 
 </Project>

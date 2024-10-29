@@ -1,4 +1,5 @@
-﻿using Desafio_FSBR.Model.ViewModel.Processo.Request;
+﻿using Desafio_FSBR.Model.ExternalModels;
+using Desafio_FSBR.Model.ViewModel.Processo.Request;
 using Desafio_FSBR.Model.ViewModel.Processo.Response;
 
 namespace Desafio_FSBR.Service.Interfaces;
@@ -10,4 +11,5 @@ public interface IProcessoService
     Task AddAsync(ProcessoCreateRequest request);
     Task<bool> UpdateAsync(int id, ProcessoUpdateRequest request);
     Task DeleteAsync(int id);
+    Task<IEnumerable<UfResponse>> GetUfsAsync(); 
 }

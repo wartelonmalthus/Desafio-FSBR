@@ -15,5 +15,4 @@ public class ProcessoCreateRequest
     public string UF { get; set; }
     [Required]
     public string Municipio { get; set; }
-    public int MunicipioCodigo { get; set; } 
 }

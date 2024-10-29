@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Refit" Version="7.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Desafio-FSBR.Data\Desafio-FSBR.Data.csproj" />
     <ProjectReference Include="..\Desafio-FSBR.Model\Desafio-FSBR.Model.csproj" />
   </ItemGroup>
