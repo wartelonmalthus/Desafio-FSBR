@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Desafio_FSBR.Model.ViewModel.Processo.Request;
+namespace Desafio_FSBR.Model.ViewModel.Processo;
 
 public class ProcessoCreateRequest
 {

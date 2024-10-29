@@ -15,6 +15,7 @@
     <thead>
         <tr>
             <th>Id</th>
+            <th>Nome</th>
             <th>NPU</th>
             <th>Data de Cadastro</th>
             <th>UF</th>
@@ -27,12 +28,12 @@
         {
             <tr>
                 <td>@processo.Id</td>
+                <td>@processo.NomeProcesso</td>
                 <td>@processo.NPU</td>
                 <td>@processo.DataCadastro.ToString("dd/MM/yyyy")</td>
                 <td>@processo.UF</td>
                 <td>@processo.Municipio</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@processo.Id" class="btn btn-info btn-sm">Visualizar</a>
                     <a asp-action="Edit" asp-route-id="@processo.Id" class="btn btn-warning btn-sm">Editar</a>
                     <a asp-action="Delete" asp-route-id="@processo.Id" class="btn btn-danger btn-sm">Excluir</a>
                 </td>
@@ -52,32 +53,32 @@
             <div class="modal-body">
                 <form asp-action="Create" method="post">
                     <div class="form-group mb-3">
-                        <label asp-for="NovoProcesso.NomeProcesso" class="control-label"></label>
-                        <input asp-for="NovoProcesso.NomeProcesso" class="form-control" />
-                        <span asp-validation-for="NovoProcesso.NomeProcesso" class="text-danger"></span>
+                        <label asp-for="Processo.NomeProcesso" class="control-label"></label>
+                        <input asp-for="Processo.NomeProcesso" class="form-control" />
+                        <span asp-validation-for="Processo.NomeProcesso" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-3">
-                        <label asp-for="NovoProcesso.NPU" class="control-label"></label>
-                        <input asp-for="NovoProcesso.NPU" class="form-control" />
-                        <span asp-validation-for="NovoProcesso.NPU" class="text-danger"></span>
+                        <label asp-for="Processo.NPU" class="control-label"></label>
+                        <input asp-for="Processo.NPU" class="form-control" />
+                        <span asp-validation-for="Processo.NPU" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-3">
-                        <label asp-for="NovoProcesso.UF" class="control-label"></label>
-                        <select asp-for="NovoProcesso.UF" class="form-control" id="ufSelect">
+                        <label asp-for="Processo.UF" class="control-label"></label>
+                        <select asp-for="Processo.UF" class="form-control" id="ufSelect">
                             <option value="">Selecione a UF</option>
                             @foreach (var uf in Model.Ufs)
                             {
                                 <option value="@uf.sigla">@uf.nome</option>
                             }
                         </select>
-                        <span asp-validation-for="NovoProcesso.UF" class="text-danger"></span>
+                        <span asp-validation-for="Processo.UF" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-3">
-                        <label asp-for="NovoProcesso.Municipio" class="control-label"></label>
-                        <select asp-for="NovoProcesso.Municipio" class="form-control" id="municipioSelect">
+                        <label asp-for="Processo.Municipio" class="control-label"></label>
+                        <select asp-for="Processo.Municipio" class="form-control" id="municipioSelect">
                             <option value="">Selecione o Município</option>
                         </select>
-                        <span asp-validation-for="NovoProcesso.Municipio" class="text-danger"></span>
+                        <span asp-validation-for="Processo.Municipio" class="text-danger"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                 </form>
@@ -85,7 +86,6 @@
         </div>
     </div>
 </div>
-
 
 @section Scripts {
     <script>

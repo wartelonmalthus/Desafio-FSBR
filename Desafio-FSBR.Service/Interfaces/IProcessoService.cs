@@ -1,6 +1,5 @@
 ﻿using Desafio_FSBR.Model.ExternalModels;
-using Desafio_FSBR.Model.ViewModel.Processo.Request;
-using Desafio_FSBR.Model.ViewModel.Processo.Response;
+using Desafio_FSBR.Model.ViewModel.Processo;
 
 namespace Desafio_FSBR.Service.Interfaces;
 

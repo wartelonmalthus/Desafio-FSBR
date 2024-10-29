@@ -1,0 +1,23 @@
+﻿@model Desafio_FSBR.Model.ViewModel.Processo.ProcessoDeleteViewModel
+
+@{
+    ViewData["Title"] = "Excluir Processo";
+}
+
+<h2>Excluir Processo</h2>
+
+<div>
+    <h4>Você realmente deseja excluir este processo?</h4>
+    <div>
+        <strong>Nome do Processo:</strong> @Model.NomeProcesso
+    </div>
+    <div>
+        <strong>NPU:</strong> @Model.NPU
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

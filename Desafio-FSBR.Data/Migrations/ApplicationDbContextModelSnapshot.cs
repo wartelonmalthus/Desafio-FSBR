@@ -43,9 +43,6 @@ namespace Desafio_FSBR.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MunicipioCodigo")
-                        .HasColumnType("int");
-
                     b.Property<string>("NPU")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

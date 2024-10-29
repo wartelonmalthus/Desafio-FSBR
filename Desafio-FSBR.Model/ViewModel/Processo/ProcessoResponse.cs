@@ -1,4 +1,4 @@
-﻿namespace Desafio_FSBR.Model.ViewModel.Processo.Response;
+﻿namespace Desafio_FSBR.Model.ViewModel.Processo;
 
 public class ProcessoResponse
 {

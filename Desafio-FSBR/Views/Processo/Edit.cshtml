@@ -1,0 +1,82 @@
+﻿@model Desafio_FSBR.Model.ViewModel.Processo.ProcessoIndexViewModel
+
+@{
+    ViewData["Title"] = "Editar Processo";
+}
+
+<h2>Editar Processo</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Processo.Id" />
+
+    <div class="form-group mb-3">
+        <label asp-for="Processo.NomeProcesso" class="control-label"></label>
+        <input asp-for="Processo.NomeProcesso" class="form-control" />
+        <span asp-validation-for="Processo.NomeProcesso" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Processo.NPU" class="control-label"></label>
+        <input asp-for="Processo.NPU" class="form-control" />
+        <span asp-validation-for="Processo.NPU" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Processo.UF" class="control-label"></label>
+        <select asp-for="Processo.UF" class="form-control" id="ufSelect">
+            <option value="">Selecione a UF</option>
+            @foreach (var uf in Model.Ufs)
+            {
+                <option value="@uf.sigla">@uf.nome</option>
+            }
+        </select>
+        <span asp-validation-for="Processo.UF" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Processo.Municipio" class="control-label"></label>
+        <select asp-for="Processo.Municipio" class="form-control" id="municipioSelect">
+            <option value="Processo.Municipio">Selecione o Município</option>
+        </select>
+        <span asp-validation-for="Processo.Municipio" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>
+
+@section Scripts {
+    <script>
+        async function loadMunicipios(uf) {
+            const municipioSelect = document.getElementById("municipioSelect");
+            municipioSelect.innerHTML = '<option value="">Selecione o Município</option>'; // Limpa as opções anteriores
+
+            if (uf) {
+                const response = await fetch(`https://brasilapi.com.br/api/ibge/municipios/v1/${uf}?providers=dados-abertos-br,gov,wikipedia`);
+                if (response.ok) {
+                    const municipios = await response.json();
+                    municipios.forEach(municipio => {
+                        const option = document.createElement("option");
+                        option.value = municipio.nome;
+                        option.text = municipio.nome;
+                        municipioSelect.add(option);
+                    });
+                } else {
+                    console.error('Erro ao buscar municípios:', response.statusText);
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const ufSelect = document.getElementById("ufSelect");
+            const selectedUF = ufSelect.value;
+            if (selectedUF) {
+                loadMunicipios(selectedUF);
+            }
+        });
+
+        document.getElementById("ufSelect").addEventListener("change", function () {
+            const uf = this.value;
+            loadMunicipios(uf);
+        });
+    </script>
+}

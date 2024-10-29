@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Desafio_FSBR.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241028222605_CriandoBancoDeDados")]
-    partial class CriandoBancoDeDados
+    [Migration("20241029002746_CriandoBanco")]
+    partial class CriandoBanco
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,9 +45,6 @@ namespace Desafio_FSBR.Data.Migrations
                     b.Property<string>("Municipio")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MunicipioCodigo")
-                        .HasColumnType("int");
 
                     b.Property<string>("NPU")
                         .IsRequired()
