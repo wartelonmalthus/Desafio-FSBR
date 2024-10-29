@@ -80,6 +80,8 @@ public class ProcessoService(IProcessoRepository processoRepository, IBrasilApiS
 
         if(request.UF is not null) processo.UF = request.UF;
 
+        if(request.DataVisualizacao is not null) processo.DataVisualizacao = request.DataVisualizacao;
+
         processo.DataAlteracao = DateTime.Now;
 
 

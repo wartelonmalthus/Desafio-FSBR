@@ -12,7 +12,9 @@ public static class ProcessoMapper
         Municipio = processo.Municipio,
         NomeProcesso = processo.NomeProcesso,
         NPU = processo.NPU,
-        UF = processo.UF
+        UF = processo.UF,
+        DataAlteracao = processo.DataAlteracao,
+        DataVisualizacao = processo.DataVisualizacao,
     };
 
     public static IEnumerable<ProcessoResponse> ToResponse(this IEnumerable<Processo> processos) => processos.Select(processo => processo.ToResponse());
@@ -73,5 +75,37 @@ public static class ProcessoMapper
         Id = processo.Id,
         NomeProcesso = processo.NomeProcesso,
         NPU = processo.NPU,
+    };
+
+    public static Processo ToEntity(this ProcessoDetailsViewModel processo) => new()
+    {
+        Id= processo.Id,
+        DataVisualizacao = processo.DataVisualizacao,
+        DataAlteracao = processo.DataAlteracao,
+        DataCadastro = processo.DataCadastro,
+        Municipio= processo.Municipio,
+        NomeProcesso = processo.NomeProcesso,
+        NPU = processo.NPU,
+        UF = processo.UF
+    };
+    public static ProcessoDetailsViewModel ToDetail(this ProcessoResponse processo) => new()
+    {
+        Id = processo.Id,
+        DataVisualizacao = processo.DataVisualizacao,
+        DataAlteracao = processo.DataAlteracao,
+        DataCadastro = processo.DataCadastro,
+        Municipio = processo.Municipio,
+        NomeProcesso = processo.NomeProcesso,
+        NPU = processo.NPU,
+        UF = processo.UF
+    };
+
+    public static ProcessoUpdateRequest ToUpdate(this ProcessoResponse processo) => new()
+    {
+        DataVisualizacao = processo.DataVisualizacao,
+        Municipio = processo.Municipio,
+        NomeProcesso = processo.NomeProcesso,
+        NPU = processo.NPU,
+        UF = processo.UF
     };
 }

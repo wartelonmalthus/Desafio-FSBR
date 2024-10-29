@@ -1,7 +1,11 @@
 ﻿namespace Desafio_FSBR.Model.ViewModel.Processo;
 
-public class ProcessoResponse
+public class ProcessoDetailsViewModel
 {
+    public ProcessoDetailsViewModel()
+    {
+        DataVisualizacao = DateTime.Now;
+    }
     public int Id { get; set; }
     public string NomeProcesso { get; set; }
     public string NPU { get; set; }
@@ -10,5 +14,4 @@ public class ProcessoResponse
     public DateTime DataCadastro { get; set; }
     public DateTime? DataVisualizacao { get; set; }
     public DateTime? DataAlteracao { get; set; }
-
 }

@@ -1,4 +1,5 @@
-﻿using Desafio_FSBR.Model.ViewModel.Processo;
+﻿using Azure.Core;
+using Desafio_FSBR.Model.ViewModel.Processo;
 using Desafio_FSBR.Service.Interfaces;
 using Desafio_FSBR.Service.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -89,5 +90,20 @@ public class ProcessoController(IProcessoService processoService) : Controller
     {
         await _processoService.DeleteAsync(id); 
         return RedirectToAction(nameof(Index)); 
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Details(int id)
+    {
+        var processo = await _processoService.GetByIdAsync(id);
+
+        if (processo is null)
+            return NotFound();
+        
+        processo.DataVisualizacao = DateTime.Now;
+
+        await _processoService.UpdateAsync(processo.Id, processo.ToUpdate());
+
+        return View(processo.ToDetail());
     }
 }

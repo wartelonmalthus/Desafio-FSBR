@@ -14,12 +14,9 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Nome</th>
             <th>NPU</th>
             <th>Data de Cadastro</th>
             <th>UF</th>
-            <th>Municipio</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -27,12 +24,9 @@
         @foreach (var processo in Model.Processos)
         {
             <tr>
-                <td>@processo.Id</td>
-                <td>@processo.NomeProcesso</td>
                 <td>@processo.NPU</td>
                 <td>@processo.DataCadastro.ToString("dd/MM/yyyy")</td>
                 <td>@processo.UF</td>
-                <td>@processo.Municipio</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@processo.Id" class="btn btn-warning btn-sm">Editar</a>
                     <a asp-action="Delete" asp-route-id="@processo.Id" class="btn btn-danger btn-sm">Excluir</a>

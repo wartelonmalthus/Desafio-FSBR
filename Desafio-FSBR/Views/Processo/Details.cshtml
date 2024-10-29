@@ -1,0 +1,40 @@
+﻿@model Desafio_FSBR.Model.ViewModel.Processo.ProcessoResponse
+
+@{
+    ViewData["Title"] = "Detalhes do Processo";
+}
+
+<h2>Detalhes do Processo</h2>
+
+<div>
+    <h4>Processo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Id</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+
+        <dt class="col-sm-2">NPU</dt>
+        <dd class="col-sm-10">@Model.NPU</dd>
+
+        <dt class="col-sm-2">Nome do Processo</dt>
+        <dd class="col-sm-10">@Model.NomeProcesso</dd>
+
+        <dt class="col-sm-2">UF</dt>
+        <dd class="col-sm-10">@Model.UF</dd>
+
+        <dt class="col-sm-2">Município</dt>
+        <dd class="col-sm-10">@Model.Municipio</dd>
+
+        <dt class="col-sm-2">Data de Cadastro</dt>
+        <dd class="col-sm-10">@Model.DataCadastro</dd>
+
+        <dt class="col-sm-2">Data de Visualização</dt>
+        <dd class="col-sm-10">@Model.DataVisualizacao</dd>
+
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Voltar para a lista</a>
+</div>
+

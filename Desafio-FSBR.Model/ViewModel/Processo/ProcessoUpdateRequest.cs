@@ -11,4 +11,5 @@ public class ProcessoUpdateRequest
     [StringLength(2)]
     public string? UF { get; set; }
     public string? Municipio { get; set; }
+    public DateTime? DataVisualizacao { get; set; }
 }
