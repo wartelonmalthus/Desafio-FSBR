@@ -10,13 +10,16 @@ public class ProcessoController(IProcessoService processoService) : Controller
     private readonly IProcessoService _processoService = processoService;
 
     [HttpGet]
-    public async Task<IActionResult> IndexAsync()
+    public async Task<IActionResult> IndexAsync(int page = 1, int pageSize = 1)
     {
+        var (processos, totalCount) = await _processoService.GetAllAsync(page, pageSize);
         var viewModel = new ProcessoIndexViewModel
         {
-            Processos = await _processoService.GetAllAsync(),
+            Processos = processos,
             Ufs  = await _processoService.GetUfsAsync(),
-
+            TotalCount = totalCount,
+            CurrentPage = page,
+            PageSize = pageSize
         };
         return View(viewModel);
     }

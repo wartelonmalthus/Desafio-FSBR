@@ -1,6 +1,8 @@
 using Desafio_FSBR.Data.Context;
 using Desafio_FSBR.Data.Interfaces;
 using Desafio_FSBR.Data.Repositories;
+using Desafio_FSBR.Model.Utils;
+using Desafio_FSBR.Service.Cache;
 using Desafio_FSBR.Service.ExternalApi;
 using Desafio_FSBR.Service.Interfaces;
 using Desafio_FSBR.Service.Services;
@@ -22,6 +24,12 @@ internal class Program
 
         //service
         builder.Services.AddScoped<IProcessoService, ProcessoService>();
+
+        //cache
+        builder.Services.Configure<CacheSettings>(builder.Configuration.GetSection("CacheSettings"));
+        builder.Services.AddSingleton<CacheOptionsProvider>();
+        builder.Services.AddMemoryCache();
+
 
 
         // Add services to the container.

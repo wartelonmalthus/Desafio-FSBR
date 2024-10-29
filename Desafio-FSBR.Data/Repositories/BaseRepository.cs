@@ -37,7 +37,20 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         }
     }
 
-    public virtual async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.Where(x => x.DelecaoLogica == false).ToListAsync();
+    public async Task<(IEnumerable<T> Items, int TotalCount)> GetAllAsync(int page, int pageSize)
+    {
+        var filteredItems = _dbSet.Where(x => x.DelecaoLogica == false);
+
+        var items =  await filteredItems
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        var totalCount = await filteredItems.CountAsync();
+
+        return (items, totalCount);
+    }
+
     public async Task<T> GetByIdAsync(int id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task UpdateAsync(T entity)
