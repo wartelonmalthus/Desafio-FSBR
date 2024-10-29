@@ -51,7 +51,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         return (items, totalCount);
     }
 
-    public async Task<T> GetByIdAsync(int id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
+    public async Task<T> GetByIdAsync(int id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id && !x.DelecaoLogica);
 
     public async Task UpdateAsync(T entity)
     {

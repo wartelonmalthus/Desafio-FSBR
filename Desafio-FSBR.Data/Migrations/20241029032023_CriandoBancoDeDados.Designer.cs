@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Desafio_FSBR.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241029002746_CriandoBanco")]
-    partial class CriandoBanco
+    [Migration("20241029032023_CriandoBancoDeDados")]
+    partial class CriandoBancoDeDados
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,9 @@ namespace Desafio_FSBR.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataVisualizacao")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("DelecaoLogica")

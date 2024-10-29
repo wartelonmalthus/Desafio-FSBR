@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Desafio_FSBR.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class CriandoBanco : Migration
+    public partial class CriandoBancoDeDados : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,6 +21,7 @@ namespace Desafio_FSBR.Data.Migrations
                     NPU = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UF = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Municipio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DataVisualizacao = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataAlteracao = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DelecaoLogica = table.Column<bool>(type: "bit", nullable: false)

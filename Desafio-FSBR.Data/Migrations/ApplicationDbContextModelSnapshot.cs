@@ -36,6 +36,9 @@ namespace Desafio_FSBR.Data.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DataVisualizacao")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("DelecaoLogica")
                         .HasColumnType("bit");
 
