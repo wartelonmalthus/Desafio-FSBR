@@ -11,7 +11,6 @@ public static class ProcessoMapper
         DataCadastro = processo.DataCadastro,
         Id = processo.Id,
         Municipio = processo.Municipio,
-        MunicipioCodigo = processo.MunicipioCodigo,
         NomeProcesso = processo.NomeProcesso,
         NPU = processo.NPU,
         UF = processo.UF
@@ -22,7 +21,6 @@ public static class ProcessoMapper
     public static Processo ToEntity(this ProcessoCreateRequest request) => new() 
     {
         Municipio = request.Municipio,
-        MunicipioCodigo = request.MunicipioCodigo,
         NomeProcesso = request.NomeProcesso,
         NPU = request.NPU,
         UF= request.UF

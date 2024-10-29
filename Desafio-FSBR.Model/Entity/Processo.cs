@@ -6,5 +6,4 @@ public class Processo : BaseEntity
     public string NPU { get; set; }
     public string UF { get; set; }
     public string Municipio { get; set; }
-    public int MunicipioCodigo { get; set; }
 }
